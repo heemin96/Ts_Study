@@ -26,12 +26,12 @@
   let person: null;
   let person2: string | null;
 
-  //unknown -> 가급적 쓰지말자
+  //unknown -> 가급적 쓰지말자 💩
   let notSure: unknown = 0;
   notSure = "he";
   notSure = true;
 
-  //any -> 최대한 피하자.
+  //any -> 최대한 피하자. 💩
   let anything: any = 0;
   anything = "hello";
 
@@ -40,4 +40,19 @@
     console.log("hello");
     return;
   }
+
+  let unusable: void = undefined;
+
+  //never -> 함수에서 절때 리턴되지 않을때 명시 하기 위해
+  function throwError(message: string): never {
+    //message -> server(log)
+    throw new Error(message);
+    while (true) {}
+  }
+
+  // objet -> 가급적 피하자 💩
+  let obj: object;
+  function acceptSomeObject(obj: object) {}
+  acceptSomeObject({ name: "ellie" });
+  acceptSomeObject({ animal: "dog" });
 }
